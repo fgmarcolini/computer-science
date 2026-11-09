@@ -1,0 +1,1 @@
+("8.10" ta6nt ("414614a51e8bf1e3d08bba8eb31d87ce20115c57" . "5b1ed40d1319fcac896eeedc63ad5c88be0ed3d6") #"C:\\Users\\Facundo G. Marcolini\\Documents\\dev\\ossu\\ProgB\\s5\\extra\\hw4.rkt" (collects #"drracket" #"private" #"drracket-errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt") (collects #"wxme" #"read.rkt"))

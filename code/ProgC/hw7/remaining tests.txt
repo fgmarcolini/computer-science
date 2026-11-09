@@ -1,0 +1,91 @@
+                Intersect.new(LineSegment.new(x1, y1, x2, y2), _) = 
+                  (preprocess_prog
+                   (Intersect.new(LineSegment.new(1.0,1.0,0.0,0.0),LineSegment.new(1.0,1.0,0.0,0.0))))
+                LineSegment.new(a,b,c,d) = LineSegment.new(0.0,0.0,1.0,1.0)
+
+                if real_equal(x1, a) and real_equal(y1, b) and real_equal(x2, c)
+                  and real_equal(y2, d) 
+                  (puts "preprocess flips a LineSegment.new successfully\n")
+                else (puts "preprocess does not flip a LineSegment.new succesfully\n")
+
+
+
+                  ("y",LineSegment.new(x1, y1, x2, y2), _) = 
+                    (preprocess_prog
+                     (("y",LineSegment.new(1.0,1.0,0.0,0.0),LineSegment.new(1.0,1.0,0.0,0.0))))
+                  LineSegment.new(a,b,c,d) = LineSegment.new(0.0,0.0,1.0,1.0)
+
+                  if real_equal(x1, a) and real_equal(y1, b) and real_equal(x2, c)
+                    and real_equal(y2, d) 
+                    (puts "preprocess flips a LineSegment.new successfully\n")
+                  else (puts "preprocess does not flip a LineSegment.new succesfully\n")
+
+
+
+                    Shift.new(_,_,LineSegment.new(x1, y1, x2, y2)) = 
+                      (preprocess_prog
+                       (Shift.new(1.0,1.0,LineSegment.new(1.0,1.0,0.0,0.0))))
+                    LineSegment.new(a,b,c,d) = LineSegment.new(0.0,0.0,1.0,1.0)
+
+                    if real_equal(x1, a) and real_equal(y1, b) and real_equal(x2, c)
+                      and real_equal(y2, d) 
+                      (puts "preprocess flips a LineSegment.new successfully\n")
+                    else (puts "preprocess does not flip a LineSegment.new succesfully\n")
+
+
+
+                      LineSegment.new(x1, y1, x2, y2) = (preprocess_prog (LineSegment.new(0.5,2.0,0.4,2.0)))
+                      LineSegment.new(a, b, c, d) = LineSegment.new(0.4,2.0,0.5,2.0)
+
+                      if real_equal(x1, a) and real_equal(y1, b) and real_equal(x2, c)
+                        and real_equal(y2, d) 
+                        (puts "preprocess flips a LineSegment.new successfully\n")
+                      else (puts "preprocess does not flip a LineSegment.new succesfully\n")
+
+
+
+
+                          # Using a Var.new 
+
+
+
+                            # With Variable Shadowing 
+
+                            Point.new(a,b) = (eval_prog (Shift.new(3.0,4.0,Var.new "a"), [("a",Point.new(4.0,4.0)),("a",Point.new(1.0,1.0))]))
+                            Point.new(c,d) = Point.new(7.0,8.0) 
+
+                            if real_equal(a,c) and real_equal(b,d)
+                              (puts "eval_prog with shadowing 'a' in environment is working properly\n")
+                            else (puts "eval_prog with shadowing 'a' in environment is not working properly\n")
+
+
+                              # With Line.new 
+
+                              Line.new(m,b) = (eval_prog (preprocess_prog (Shift.new(2.0, 5.0, Line.new(4.0,4.0))), []))
+                              Line.new(c,d) = Line.new(4.0,1.0) 
+
+                              if real_equal(m,c) and real_equal(b,d)
+                                (puts "eval_prog with line worked\n")
+                              else (puts "eval_prog with line is not working properly\n")
+
+
+                                # With Vertical Line.new 
+
+                                VerticalLine.new(x) = (eval_prog (preprocess_prog (Shift.new(2.0, 5.0, VerticalLine.new(4.0))), []))
+                                VerticalLine.new(y) = VerticalLine.new(6.0) 
+
+                                if real_equal(x,y)
+                                  (puts "eval_prog with a vertical line worked\n")
+                                else (puts "eval_prog with a vertical line is not working properly\n")
+
+
+                                  # With Line.new Segment 
+
+                                  LineSegment.new(x1, y1, x2, y2) = (eval_prog (preprocess_prog (Shift.new(2.0, 5.0, LineSegment.new(2.0, 2.0, 4.0, 4.0))), []))
+                                  LineSegment.new(a1, b1, a2, b2) = LineSegment.new(4.0, 7.0, 6.0, 9.0) 
+
+                                  if real_close_point (x1, y1) (a1, b1) and real_close_point (x2, y2) (a2, b2)
+                                    (puts "eval_prog with a line segment worked\n")
+                                  else (puts "eval_prog with a line segment is not working properly\n")
+
+
